@@ -1,42 +1,30 @@
 <template>
   <div class="home">
-    <h1>Project Musicbrainz</h1>
-    <Searchbar :types="types"
-               @changed="getData"></Searchbar>
-
+    <h1>musicbrainzzz</h1>
+    <Searchbar @changed="getData"></Searchbar>
+    <Result v-if="data" :data="data"></Result>
   </div>
 </template>
 
 <script>
-  import axios from 'axios'
   import Searchbar from "../components/Searchbar.vue";
+  import Result from "../components/Result.vue";
 
   export default {
     name: 'Home',
-    data: function () {
-      return {
-        types: ['Artist', 'Album', 'Label', 'Title'],
-        data: null
+    computed: {
+      data: function () {
+        return this.$store.state.data
       }
     },
     methods: {
-      getId: function (params) {
-        const type = params.type.toLowerCase();
-        const key = type + 's';
-        const query = params.query;
-        const url = `https://musicbrainz.org/ws/2/${type}?query=${query}&fmt=json`;
-        axios.get(url)
-          .then(response => {
-            console.log(response.data[key][0])
-          })
-        .catch(error => console.log(error))
-      },
-      getData: function (params) {
-        this.getId(params)
+      getData: function () {
+        this.$store.dispatch('getData')
       }
     },
     components: {
-      Searchbar
+      Searchbar,
+      Result
     }
   }
 </script>

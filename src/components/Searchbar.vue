@@ -1,6 +1,6 @@
 <template>
     <div class="searchbar">
-        <select v-model="selectedType">
+        <select v-model="selectedType" @change="onTypeChange">
             <option v-for="(type,index) in types"
                     :key="index"
                     :selected="type === selectedType"
@@ -8,20 +8,20 @@
         </select>
         <input type="text"
                :placeholder="placeholder"
-               v-model="query"
+               v-model="name"
                @change="onChange">
-        <button>Search</button>
+        <button>search</button>
     </div>
 </template>
 
 <script>
     export default {
         name: "Searchbar",
-        props: ['types'],
         data: function () {
             return {
-                selectedType: this.types[0],
-                query: ""
+                types: this.$store.state.types,
+                selectedType: this.$store.state.selectedType,
+                name: ""
             }
         },
         computed: {
@@ -30,12 +30,12 @@
             }
         },
         methods: {
+            onTypeChange: function(){
+                this.$store.commit('setSelectedType', this.selectedType)
+            },
             onChange: function () {
-                const params = {
-                    type: this.selectedType,
-                    query: this.search
-                };
-                this.$emit('changed', params)
+                this.$store.commit('setName', this.name)
+                this.$store.dispatch('getData')
             }
         }
     }
