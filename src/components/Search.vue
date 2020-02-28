@@ -25,20 +25,21 @@
             }
         },
         computed: {
-            placeholder: function () {
-                return `Type the name of a ${this.selectedType}`
-            },
             ...mapState({
-                types: state => state.types,
-                selectedType: state => state.selectedType
-            })
+                types: state => state.search.types,
+                selectedType: state => state.search.selectedType
+            }),
+            placeholder: function () {
+                const a = this.selectedType === 'artist' ? 'an' : 'a'
+                return `Type the name of ${a} ${this.selectedType}`
+            }
         },
         methods: {
             onChange: function () {
                 this.$emit('changed', this.name)
             },
             onTypeChange: function (e) {
-                this.$store.commit('setSelectedType', e.target.value)
+                this.$store.commit('search/setSelectedType', e.target.value)
             }
         }
     }

@@ -10,10 +10,11 @@
 <script>
   export default {
     name: 'App',
-    methods: {
-    },
     created() {
-      this.$store.dispatch('init')
+      this.$store.dispatch('search/init')
+    },
+    mounted(){
+      this.$store.commit('setLoading', false)
     }
   }
 </script>

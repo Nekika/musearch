@@ -17,16 +17,15 @@
     name: 'Home',
     computed: {
       ...mapState({
-        type: state => state.selectedType,
+        type: state => state.search.selectedType,
         loading: state => state.loading,
-        results: state => state.results
+        results: state => state.search.results
       })
     },
     methods: {
       getData: function(name) {
-        this.$store.commit('toggleLoading')
         const params = {name: name, type: this.type}
-        this.$store.dispatch('getResults', params)
+        this.$store.dispatch('search/getResults', params)
       }
     },
     components: {
