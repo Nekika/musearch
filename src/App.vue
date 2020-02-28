@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div id="navbar">
-      <router-link to="/">home</router-link>
+      <router-link to="/">musicbrainzzz</router-link>
     </div>
     <router-view/>
   </div>
@@ -10,6 +10,8 @@
 <script>
   export default {
     name: 'App',
+    methods: {
+    },
     created() {
       this.$store.dispatch('init')
     }

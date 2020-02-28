@@ -1,30 +1,38 @@
 <template>
-  <div class="home">
-    <h1>musicbrainzzz</h1>
-    <Searchbar @changed="getData"></Searchbar>
-    <Result v-if="data" :data="data"></Result>
+  <div id="home">
+    <Search @changed="getData"></Search>
+    <Loader v-if="loading"></Loader>
+    <ResultList v-else-if="results"></ResultList>
   </div>
 </template>
 
 <script>
-  import Searchbar from "../components/Searchbar.vue";
-  import Result from "../components/Result.vue";
+  import Search from "../components/Search"
+  import Loader from "../components/Loader"
+  import ResultList from "../components/ResultList"
+
+  import {mapState} from 'vuex'
 
   export default {
     name: 'Home',
     computed: {
-      data: function () {
-        return this.$store.state.data
-      }
+      ...mapState({
+        type: state => state.selectedType,
+        loading: state => state.loading,
+        results: state => state.results
+      })
     },
     methods: {
-      getData: function () {
-        this.$store.dispatch('getData')
+      getData: function(name) {
+        this.$store.commit('toggleLoading')
+        const params = {name: name, type: this.type}
+        this.$store.dispatch('getResults', params)
       }
     },
     components: {
-      Searchbar,
-      Result
+      Search,
+      Loader,
+      ResultList
     }
   }
 </script>
