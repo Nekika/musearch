@@ -1,14 +1,15 @@
 <template>
     <Loader v-if="loading"></Loader>
     <div v-else class="details">
-        <h3>Details</h3>
-        <p>{{ name }}</p>
+        <h2>{{ name }}</h2>
+        <RecordList></RecordList>
     </div>
 </template>
 
 <script>
     import {mapState} from 'vuex'
     import Loader from "../components/Loader";
+    import RecordList from "../components/RecordList";
 
     export default {
         name: "Details",
@@ -17,18 +18,20 @@
             ...mapState({
                 type: state => state.search.selectedType,
                 loading: state => state.loading,
-                details: state => state.entity.details
+                details: state => state.entity.details,
+                data: state => state[state.search.selectedType]
             }),
             name: function () {
                 return this.details.name
             }
         },
         created(){
-            const params = {id: this.id, type: this.type}
-            this.$store.dispatch('entity/getDetails', params)
+            this.$store.dispatch('entity/getDetails', {id: this.id, type: this.type})
+            this.$store.dispatch(`${this.type}/getData`, this.id)
         },
         components: {
-            Loader
+            Loader,
+            RecordList
         }
     }
 </script>

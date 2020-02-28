@@ -4,16 +4,21 @@ import Vuex from 'vuex'
 // Modules
 import search from './modules/search';
 import entity from './modules/entity'
+import artist from './modules/artist'
 
 Vue.use(Vuex)
 
 const state = {
-  loading: true
+  loading: true,
+  error: null
 }
 
 const mutations = {
   setLoading: function (state, loading) {
     state.loading = loading
+  },
+  setError: function (state, error) {
+    state.error = error
   }
 }
 
@@ -22,7 +27,8 @@ const store = new Vuex.Store({
   mutations,
   modules: {
     search,
-    entity
+    entity,
+    artist
   }
 })
 

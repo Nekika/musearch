@@ -13,9 +13,6 @@ const mutations = {
     },
     setResults: function (state, results) {
         state.results = results
-    },
-    setError: function (state, error) {
-        state.error = error
     }
 }
 
@@ -31,7 +28,7 @@ const actions = {
                 const key = params.type + 's'
                 commit('setResults', res.data[key])
             })
-            .catch(err => {commit('setError', err)})
+            .catch(err => commit('setError', err, {root: true}))
             .finally(() => commit('setLoading', false, {root: true}))
     }
 }

@@ -1,30 +1,24 @@
 import axios from 'axios'
 
 const state = {
-    details: null,
-    error: null
+    details: null
 }
 
 const mutations = {
     setDetails: function (state, details){
         state.details = details
-    },
-    setError: function (state, error) {
-        state.error = error
     }
 }
 
 const actions = {
     getDetails: function ({commit}, params) {
         commit('setLoading', true, {root: true})
-        const url = `http://musicbrainz.org/ws/2/${params.type}?${params.type}=${params.id}?fmt=json`
+        const url = `http://musicbrainz.org/ws/2/${params.type}/${params.id}?fmt=json`
         axios.get(url)
             .then(res => {
                 commit('setDetails', res.data)
             })
-            .catch(err => {
-                commit('setError', err)
-            })
+            .catch(err => {commit('setError', err, {root: true})})
             .finally(() => commit('setLoading', false, {root: true}))
     }
 }
