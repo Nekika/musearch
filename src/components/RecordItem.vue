@@ -10,7 +10,7 @@
         props: ['record'],
         computed: {
             title: function () {
-                return this.record.title
+                return this.record.title 
             }
         }
     }

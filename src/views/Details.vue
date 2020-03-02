@@ -3,6 +3,7 @@
     <div v-else class="details">
         <h2>{{ name }}</h2>
         <RecordList :id="id"></RecordList>
+        <ReleaseList :id="id"></ReleaseList>
     </div>
 </template>
 
@@ -10,6 +11,7 @@
     import {mapGetters, mapActions, mapMutations} from 'vuex'
     import Loader from "../components/Loader";
     import RecordList from "../components/RecordList";
+    import ReleaseList from "../components/ReleaseList";
 
     export default {
         name: "Details",
@@ -19,10 +21,13 @@
                 loading: 'loading',
                 type: 'search/selectedType',
                 name: 'entity/name',
+                releases: 'artist/releases',
+                recordings: 'artist/recordings',
             })
         },
         methods: {
             ...mapMutations([
+                'setLoading',
                 'artist/reset'
             ]),
             ...mapActions([
@@ -30,17 +35,20 @@
                 'entity/getData',
                 'artist/getRecordings',
                 'artist/getReleases'
-
             ])
         },
         created(){
             this['artist/reset']()
             this['entity/getDetails']({ id: this.id, type: this.type })
+        },
+        mounted() {
             this[`entity/getData`]({ id: this.id, type: this.type})
+            this['setLoading'](false)
         },
         components: {
             Loader,
-            RecordList
+            RecordList,
+            ReleaseList
         }
     }
 </script>

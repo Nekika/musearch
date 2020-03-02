@@ -6,6 +6,7 @@
 </template>
 
 <script>
+    import {mapMutations} from 'vuex'
     export default {
         name: "ResultItem",
         props: ['result'],
@@ -18,7 +19,9 @@
             }
         },
         methods: {
+            ...mapMutations(['setLoading']),
             goToDetails: function () {
+                this['setLoading'](true)
                 this.$router.push({name:'details', params: {id: this.id}})
             }
         }
