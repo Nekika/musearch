@@ -32,7 +32,7 @@ const actions = {
     },
     getResults: function ({commit}, params) {
         commit('setLoading', true, {root: true})
-        const url = `http://musicbrainz.org/ws/2/${params.type}?query=name:${params.name}&fmt=json`
+        const url = `http://musicbrainz.org/ws/2/${params.type}?query=name:${params.name}&limit=10&fmt=json`
         axios.get(url)
             .then(res => {
                 const key = params.type + 's'

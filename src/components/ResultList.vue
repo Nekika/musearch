@@ -1,6 +1,6 @@
 <template>
     <div class="result-list">
-        <h3>Results</h3>
+        <h3>10 most relevant results</h3>
         <ResultItem v-for="(result, index) in results" :key="index" :result="result"></ResultItem>
     </div>
 </template>
