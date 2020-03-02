@@ -8,13 +8,18 @@
 </template>
 
 <script>
+  import {mapActions, mapMutations} from 'vuex'
   export default {
     name: 'App',
+    methods: {
+      ...mapActions(['search/init']),
+      ...mapMutations(['setLoading'])
+    },
     created() {
-      this.$store.dispatch('search/init')
+      this['search/init']()
     },
     mounted(){
-      this.$store.commit('setLoading', false)
+      this['setLoading'](false)
     }
   }
 </script>

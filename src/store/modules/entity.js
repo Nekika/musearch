@@ -29,6 +29,9 @@ const actions = {
     },
     getData: function ({dispatch}, params) {
         dispatch(`${params.type}/getData`, params.id, {root: true})
+    },
+    reset: function ({commit}, type) {
+        commit(`${type}/reset`, null, {root: true})
     }
 }
 

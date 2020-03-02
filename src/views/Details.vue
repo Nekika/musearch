@@ -27,18 +27,16 @@
         },
         methods: {
             ...mapMutations([
-                'setLoading',
-                'artist/reset'
+                'setLoading'
             ]),
             ...mapActions([
+                'entity/reset',
                 'entity/getDetails',
-                'entity/getData',
-                'artist/getRecordings',
-                'artist/getReleases'
+                'entity/getData'
             ])
         },
         created(){
-            this['artist/reset']()
+            this['entity/reset'](this.type)
             this['entity/getDetails']({ id: this.id, type: this.type })
         },
         mounted() {
