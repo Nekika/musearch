@@ -27,6 +27,21 @@ const mutations = {
                 reject(e)
             }
         })
+    },
+    reset: function (state) {
+        state.releases = []
+        state.recordings = []
+        state.relIndex = 0
+        state.recIndex = 0
+    }
+}
+
+const getters = {
+    releases: state => {
+        return state.releases
+    },
+    recordings: state => {
+        return state.recordings
     }
 }
 
@@ -62,6 +77,7 @@ const actions = {
 export default {
     namespaced: true,
     state,
+    getters,
     mutations,
     actions
 }

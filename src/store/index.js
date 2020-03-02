@@ -22,9 +22,14 @@ const mutations = {
   }
 }
 
+const getters = {
+  loading: state => {return state.loading}
+}
+
 const store = new Vuex.Store({
   state,
   mutations,
+  getters,
   modules: {
     search,
     entity,

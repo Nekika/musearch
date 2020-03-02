@@ -6,14 +6,14 @@
 </template>
 
 <script>
-    import {mapState} from 'vuex'
+    import {mapGetters} from 'vuex'
     import ResultItem from "./ResultItem";
 
     export default {
         name: "ResultList",
         computed: {
-            ...mapState({
-                results: state => state.search.results
+            ...mapGetters({
+                results: 'search/results'
             })
         },
         components: {

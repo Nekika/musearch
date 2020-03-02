@@ -10,6 +10,12 @@ const mutations = {
     }
 }
 
+const getters = {
+    name: state => {
+        return state.details.name || state.details.title
+    }
+}
+
 const actions = {
     getDetails: function ({commit}, params) {
         commit('setLoading', true, {root: true})
@@ -26,6 +32,7 @@ const actions = {
 export default {
     namespaced: true,
     state,
+    getters,
     mutations,
     actions
 }

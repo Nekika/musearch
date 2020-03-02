@@ -15,7 +15,7 @@
 </template>
 
 <script>
-    import {mapState} from 'vuex'
+    import {mapGetters} from 'vuex'
 
     export default {
         name: "Search",
@@ -25,14 +25,11 @@
             }
         },
         computed: {
-            ...mapState({
-                types: state => state.search.types,
-                selectedType: state => state.search.selectedType
-            }),
-            placeholder: function () {
-                const a = this.selectedType === 'artist' ? 'an' : 'a'
-                return `Type the name of ${a} ${this.selectedType}`
-            }
+            ...mapGetters({
+                types: 'search/types',
+                selectedType: 'search/selectedType',
+                placeholder: 'search/placeholder'
+            })
         },
         methods: {
             onChange: function () {

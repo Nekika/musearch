@@ -11,20 +11,20 @@
   import Loader from "../components/Loader"
   import ResultList from "../components/ResultList"
 
-  import {mapState} from 'vuex'
+  import {mapGetters} from 'vuex'
 
   export default {
     name: 'Home',
     computed: {
-      ...mapState({
-        type: state => state.search.selectedType,
-        loading: state => state.loading,
-        results: state => state.search.results
+      ...mapGetters({
+        selectedType: 'search/selectedType',
+        results: 'search/results',
+        loading: 'loading',
       })
     },
     methods: {
       getData: function(name) {
-        const params = {name: name, type: this.type}
+        const params = {name: name, type: this.selectedType}
         this.$store.dispatch('search/getResults', params)
       }
     },
