@@ -2,12 +2,12 @@
     <Loader v-if="loading"></Loader>
     <div v-else class="details">
         <h2>{{ name }}</h2>
-        <RecordList></RecordList>
+        <RecordList :id="id"></RecordList>
     </div>
 </template>
 
 <script>
-    import {mapGetters} from 'vuex'
+    import {mapGetters, mapActions, mapMutations} from 'vuex'
     import Loader from "../components/Loader";
     import RecordList from "../components/RecordList";
 
@@ -21,10 +21,22 @@
                 name: 'entity/name',
             })
         },
+        methods: {
+            ...mapMutations([
+                'artist/reset'
+            ]),
+            ...mapActions([
+                'entity/getDetails',
+                'entity/getData',
+                'artist/getRecordings',
+                'artist/getReleases'
+
+            ])
+        },
         created(){
-            this.$store.commit('artist/reset')
-            this.$store.dispatch('entity/getDetails', {id: this.id, type: this.type})
-            this.$store.dispatch(`${this.type}/getData`, this.id)
+            this['artist/reset']()
+            this['entity/getDetails']({ id: this.id, type: this.type })
+            this[`entity/getData`]({ id: this.id, type: this.type})
         },
         components: {
             Loader,

@@ -1,7 +1,6 @@
 import axios from 'axios'
 
 const state = {
-    id: null,
     releases: [],
     recordings: [],
     relIndex: 0,
@@ -9,24 +8,17 @@ const state = {
 }
 
 const mutations = {
-    setReleases: function (state, releases){
+    addReleases: function (state, releases){
         state.releases = state.releases.concat(releases)
     },
-    setRecordings: function (state, recordings) {
+    addRecordings: function (state, recordings) {
         state.recordings = state.recordings.concat(recordings)
     },
     incRelIndex: function (state) {
         state.relIndex++
     },
     incRecIndex: function (state) {
-        return new Promise((resolve, reject) => {
-            try {
-                state.recIndex++
-                resolve()
-            } catch (e) {
-                reject(e)
-            }
-        })
+        state.recIndex++
     },
     reset: function (state) {
         state.releases = []
@@ -37,40 +29,38 @@ const mutations = {
 }
 
 const getters = {
-    releases: state => {
-        return state.releases
-    },
-    recordings: state => {
-        return state.recordings
-    }
+    releases: state => {return state.releases},
+    recordings: state => {return state.recordings}
 }
 
 const actions = {
-    getReleases: function ({state}, id) {
+    getReleases: function ({state, commit}, id) {
         const os = state.relIndex * 25
         const url = `http://musicbrainz.org/ws/2/release?artist=${id}&offset=${os}&fmt=json`
-        return axios.get(url)
-    },
-    getRecordings: function ({state}, id) {
-        const os = state.recIndex * 25
-        const url = `http://musicbrainz.org/ws/2/recording?artist=${id}&offset=${os}&fmt=json`
-        return axios.get(url)
-    },
-    getData: function ({dispatch, commit}, id) {
-        const promises = [
-            dispatch('getReleases', id),
-            dispatch('getRecordings', id)
-        ]
-        Promise.all(promises)
-            .then(responses => {
-                const releases = responses[0].data.releases
-                const recordings = responses[1].data.recordings
-                commit('setReleases', releases)
-                commit('setRecordings', recordings)
+        axios.get(url)
+            .then(res => {
+                const releases = res.data.releases
+                commit('addReleases', releases)
             })
             .catch(err => {
                 commit('setError', err, {root: true})
             })
+    },
+    getRecordings: function ({state, commit}, id) {
+        const os = state.recIndex * 25
+        const url = `http://musicbrainz.org/ws/2/recording?artist=${id}&offset=${os}&fmt=json`
+        axios.get(url)
+            .then(res => {
+                const recordings = res.data.recordings
+                commit('addRecordings', recordings)
+            })
+            .catch(err => {
+                commit('setError', err, {root: true})
+            })
+    },
+    getData: function ({dispatch}, id) {
+        dispatch('getReleases', id)
+        dispatch('getRecordings', id)
     }
 }
 

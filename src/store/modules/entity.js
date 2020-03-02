@@ -26,6 +26,9 @@ const actions = {
             })
             .catch(err => {commit('setError', err, {root: true})})
             .finally(() => commit('setLoading', false, {root: true}))
+    },
+    getData: function ({dispatch}, params) {
+        dispatch(`${params.type}/getData`, params.id, {root: true})
     }
 }
 

@@ -7,19 +7,32 @@
 </template>
 
 <script>
-    import {mapState} from 'vuex'
+    import {mapGetters, mapActions, mapMutations} from 'vuex'
     import RecordItem from "./RecordItem"
 
     export default {
         name: "RecordList",
+        props: ['id'],
         computed: {
-            ...mapState({
-                recordings: state => state.artist.recordings
+            ...mapGetters({
+                recordings: 'artist/recordings'
             })
         },
         methods: {
+            ...mapMutations([
+                'artist/incRecIndex',
+            ]),
+            ...mapActions([
+                'artist/getRecordings',
+                'setError'
+            ]),
             loadMore: function () {
-
+                return new Promise((resolve, reject) => {
+                    try { this['artist/incRecIndex']() } catch (e) { reject(e) }
+                    resolve()
+                })
+                .then(() => { this['artist/getRecordings'](this.id) })
+                .catch(err => { this['setError'](err) })
             }
         },
         components: {
