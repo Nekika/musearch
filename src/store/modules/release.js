@@ -1,4 +1,4 @@
-//import axios from 'axios'
+import axios from 'axios'
 
 const state = {
     tracklist: []
@@ -9,18 +9,25 @@ const getters = {
 }
 
 const mutations = {
+    setTracklist: function(state, tracklist){
+      state.tracklist = tracklist
+    },
     reset: function (state) {
         state.tracklist = []
     }
 }
 
 const actions = {
-    getData: function (context, id) {
-        console.log(id);
-        /*const url = `http://musicbrainz.org/ws/2/release?release=${id}&fmt=json`
-        axios.get(url)
-            .then(res => commit('setDetails', res.data))
-            .catch(err => commit('setError', err, {root: true}))*/
+    getTracklist: function ({commit}, id) {
+        const url = `http://musicbrainz.org/ws/2/release/${id}?inc=recordings&fmt=json`
+        return new Promise((resolve, reject) => {
+            axios.get(url)
+                .then(res => {
+                    commit('setTracklist', res.data.media[0].tracks)
+                    resolve()
+                })
+                .catch(err => reject(err))
+        })
     }
 }
 

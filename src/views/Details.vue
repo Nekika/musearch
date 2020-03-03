@@ -3,6 +3,7 @@
     <div v-else class="details">
         <h2>{{ name }}</h2>
         <Artist v-if="type === 'artist'" :id="id"></Artist>
+        <Release v-else-if="type === 'release'" :id="id"></Release>
     </div>
 </template>
 
@@ -10,6 +11,7 @@
     import {mapGetters, mapActions, mapMutations} from 'vuex'
     import Loader from "../components/Loader";
     import Artist from "./Artist";
+    import Release from "./Release";
 
     export default {
         name: "Details",
@@ -39,7 +41,8 @@
         },
         components: {
             Loader,
-            Artist
+            Artist,
+            Release
         }
     }
 </script>
