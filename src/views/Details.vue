@@ -19,27 +19,23 @@
                 loading: 'loading',
                 type: 'search/selectedType',
                 name: 'entity/name',
-                releases: 'artist/releases',
-                recordings: 'artist/recordings',
             })
         },
         methods: {
             ...mapMutations([
-                'setLoading'
+                'setLoading',
+                'setError'
             ]),
             ...mapActions([
                 'entity/reset',
-                'entity/getDetails',
-                'entity/getData'
+                'entity/getDetails'
             ])
         },
         created(){
             this['entity/reset'](this.type)
             this['entity/getDetails']({ id: this.id, type: this.type })
-        },
-        mounted() {
-            this[`entity/getData`]({ id: this.id, type: this.type})
-            this['setLoading'](false)
+                .then(() => this['setLoading'](false))
+                .catch(err => this['setError'](err))
         },
         components: {
             Loader,

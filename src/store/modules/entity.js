@@ -19,9 +19,14 @@ const getters = {
 const actions = {
     getDetails: function ({commit}, params) {
         const url = `http://musicbrainz.org/ws/2/${params.type}/${params.id}?fmt=json`
-        axios.get(url)
-            .then(res => commit('setDetails', res.data))
-            .catch(err => commit('setError', err, {root: true}))
+        return new Promise((resolve, reject) => {
+            axios.get(url)
+                .then(res => {
+                    commit('setDetails', res.data)
+                    resolve()
+                })
+                .catch(err => reject(err))
+        })
     },
     getData: function ({dispatch}, params) {
         dispatch(`${params.type}/getData`, params.id, {root: true})
