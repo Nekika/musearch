@@ -48,10 +48,9 @@ const actions = {
             .then(res => commit('addRecordings', res.data.recordings))
             .catch(err => commit('setError', err, {root: true}))
     },
-    getData: function ({dispatch, commit}, id) {
+    getData: function ({dispatch}, id) {
         dispatch('getReleases', id)
         dispatch('getRecordings', id)
-        commit('setLoading', false, {root: true})
     }
 }
 

@@ -5,14 +5,11 @@ const state = {
 }
 
 const getters = {
-    details: state => { return state.details }
+    tracklist: state => { return state.tracklist }
 }
 
 const mutations = {
-    setDetails: function ({state}, details) {
-        state.details = details
-    },
-    reset: function ({state}) {
+    reset: function (state) {
         state.tracklist = []
     }
 }

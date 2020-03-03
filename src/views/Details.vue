@@ -2,16 +2,14 @@
     <Loader v-if="loading"></Loader>
     <div v-else class="details">
         <h2>{{ name }}</h2>
-        <RecordList :id="id"></RecordList>
-        <ReleaseList :id="id"></ReleaseList>
+        <Artist v-if="type === 'artist'" :id="id"></Artist>
     </div>
 </template>
 
 <script>
-    import {mapGetters, mapActions} from 'vuex'
+    import {mapGetters, mapActions, mapMutations} from 'vuex'
     import Loader from "../components/Loader";
-    import RecordList from "../components/RecordList";
-    import ReleaseList from "../components/ReleaseList";
+    import Artist from "./Artist";
 
     export default {
         name: "Details",
@@ -26,6 +24,9 @@
             })
         },
         methods: {
+            ...mapMutations([
+                'setLoading'
+            ]),
             ...mapActions([
                 'entity/reset',
                 'entity/getDetails',
@@ -38,11 +39,11 @@
         },
         mounted() {
             this[`entity/getData`]({ id: this.id, type: this.type})
+            this['setLoading'](false)
         },
         components: {
             Loader,
-            RecordList,
-            ReleaseList
+            Artist
         }
     }
 </script>
