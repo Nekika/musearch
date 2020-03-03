@@ -8,7 +8,7 @@
 </template>
 
 <script>
-    import {mapGetters, mapActions, mapMutations} from 'vuex'
+    import {mapGetters, mapActions} from 'vuex'
     import Loader from "../components/Loader";
     import RecordList from "../components/RecordList";
     import ReleaseList from "../components/ReleaseList";
@@ -26,9 +26,6 @@
             })
         },
         methods: {
-            ...mapMutations([
-                'setLoading'
-            ]),
             ...mapActions([
                 'entity/reset',
                 'entity/getDetails',
@@ -41,7 +38,6 @@
         },
         mounted() {
             this[`entity/getData`]({ id: this.id, type: this.type})
-            this['setLoading'](false)
         },
         components: {
             Loader,

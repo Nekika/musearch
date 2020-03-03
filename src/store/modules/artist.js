@@ -38,29 +38,20 @@ const actions = {
         const os = state.relIndex * 25
         const url = `http://musicbrainz.org/ws/2/release?artist=${id}&offset=${os}&fmt=json`
         axios.get(url)
-            .then(res => {
-                const releases = res.data.releases
-                commit('addReleases', releases)
-            })
-            .catch(err => {
-                commit('setError', err, {root: true})
-            })
+            .then(res => commit('addReleases', res.data.releases))
+            .catch(err => commit('setError', err, {root: true}))
     },
     getRecordings: function ({state, commit}, id) {
         const os = state.recIndex * 25
         const url = `http://musicbrainz.org/ws/2/recording?artist=${id}&offset=${os}&fmt=json`
         axios.get(url)
-            .then(res => {
-                const recordings = res.data.recordings
-                commit('addRecordings', recordings)
-            })
-            .catch(err => {
-                commit('setError', err, {root: true})
-            })
+            .then(res => commit('addRecordings', res.data.recordings))
+            .catch(err => commit('setError', err, {root: true}))
     },
-    getData: function ({dispatch}, id) {
+    getData: function ({dispatch, commit}, id) {
         dispatch('getReleases', id)
         dispatch('getRecordings', id)
+        commit('setLoading', false, {root: true})
     }
 }
 

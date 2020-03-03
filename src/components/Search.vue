@@ -15,7 +15,7 @@
 </template>
 
 <script>
-    import {mapGetters} from 'vuex'
+    import {mapGetters, mapMutations} from 'vuex'
 
     export default {
         name: "Search",
@@ -32,11 +32,14 @@
             })
         },
         methods: {
+            ...mapMutations([
+               'search/setSelectedType'
+            ]),
             onChange: function () {
                 this.$emit('changed', this.name)
             },
             onTypeChange: function (e) {
-                this.$store.commit('search/setSelectedType', e.target.value)
+                this['search/setSelectedType'](e.target.value)
             }
         }
     }

@@ -21,11 +21,9 @@ const actions = {
         commit('setLoading', true, {root: true})
         const url = `http://musicbrainz.org/ws/2/${params.type}/${params.id}?fmt=json`
         axios.get(url)
-            .then(res => {
-                commit('setDetails', res.data)
-            })
-            .catch(err => {commit('setError', err, {root: true})})
-            .finally(() => commit('setLoading', false, {root: true}))
+            .then(res => commit('setDetails', res.data))
+            .catch(err => commit('setError', err, {root: true}))
+            .finally(() => commit('setLoading', false, {root: true}) )
     },
     getData: function ({dispatch}, params) {
         dispatch(`${params.type}/getData`, params.id, {root: true})
