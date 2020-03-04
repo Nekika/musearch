@@ -6,6 +6,7 @@ import search from './modules/search';
 import entity from './modules/entity'
 import artist from './modules/artist'
 import release from './modules/release'
+import recording from "./modules/recording"
 
 Vue.use(Vuex)
 
@@ -35,7 +36,8 @@ const store = new Vuex.Store({
     search,
     entity,
     artist,
-    release
+    release,
+    recording
   }
 })
 
