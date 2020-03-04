@@ -43,9 +43,7 @@ const actions = {
                    commit('addReleases', res.data.releases)
                    resolve()
                })
-               .catch(err => {
-                   reject(err)
-               })
+               .catch(err => { reject(err) })
        })
     },
     getRecordings: function ({state, commit}, id) {
@@ -57,16 +55,13 @@ const actions = {
                     commit('addRecordings', res.data.recordings)
                     resolve()
                 })
-                .catch(err => {
-                    reject(err)
-                })
+                .catch(err => { reject(err) })
         })
     },
     getData: function ({dispatch, commit}, id) {
         dispatch('getReleases', id)
             .then(() => { return dispatch('getRecordings', id) })
             .catch(err => commit('setError', err, {root: true}))
-            .finally(() => commit('setLoading', false, {root: true}))
     }
 }
 
