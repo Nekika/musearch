@@ -1,7 +1,7 @@
 <template>
     <div>
-        <RecordList :id="id"></RecordList>
         <ReleaseList :id="id"></ReleaseList>
+        <RecordList :id="id"></RecordList>
     </div>
 </template>
 
