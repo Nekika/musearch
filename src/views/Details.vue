@@ -4,14 +4,16 @@
         <h2>{{ name }}</h2>
         <Artist v-if="type === 'artist'" :id="id"></Artist>
         <Release v-else-if="type === 'release'" :id="id"></Release>
+        <Recording v-else-if="type === 'recording'" :id="id"></Recording>
     </div>
 </template>
 
 <script>
     import {mapGetters, mapActions, mapMutations} from 'vuex'
-    import Loader from "../components/Loader";
-    import Artist from "./Artist";
-    import Release from "./Release";
+    import Loader from "../components/Loader"
+    import Artist from "./Artist"
+    import Release from "./Release"
+    import Recording from "./Recording"
 
     export default {
         name: "Details",
@@ -42,7 +44,8 @@
         components: {
             Loader,
             Artist,
-            Release
+            Release,
+            Recording
         }
     }
 </script>
