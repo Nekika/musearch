@@ -1,5 +1,6 @@
 <template>
   <div id="search">
+    <h3>search</h3>
     <Searchbar @changed="getData"></Searchbar>
     <Loader v-if="loading"></Loader>
     <ResultList v-else-if="results"></ResultList>
@@ -35,3 +36,11 @@
     }
   }
 </script>
+
+<style lang="sass" scoped>
+  @import '../sass/scheme'
+
+  #search
+    color: $blue
+    margin: 20px 10px 0 10px
+</style>

@@ -53,7 +53,7 @@
     .searchbar
         display: flex
         flex-direction: row
-        justify-content: space-evenly
+        justify-content: space-between
         input, select
             text-align: center
             border-width: 1px
