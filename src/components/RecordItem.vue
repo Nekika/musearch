@@ -1,7 +1,7 @@
 <template>
-    <div class="record-item">
-        <h4>{{ title }}</h4>
-    </div>
+    <li class="record-item">
+        {{ title }}
+    </li>
 </template>
 
 <script>
@@ -10,7 +10,7 @@
         props: ['record'],
         computed: {
             title: function () {
-                return this.record.title 
+                return this.record.title
             }
         }
     }

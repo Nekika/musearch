@@ -1,8 +1,9 @@
 <template>
     <div class="record-list">
-        <h3>Records</h3>
-        <RecordItem v-for="(record, index) in recordings" :key="index" :record="record"></RecordItem>
-        <button @click="loadMore">Load more</button>
+        <ul>
+            <RecordItem v-for="(record, index) in recordings" :key="index" :record="record"></RecordItem>
+        </ul>
+        <button class="btn" @click="loadMore">Load more</button>
     </div>
 </template>
 
@@ -41,6 +42,7 @@
     }
 </script>
 
-<style scoped>
-
+<style lang="sass" scoped>
+    .record-list
+        @import '../sass/list'
 </style>

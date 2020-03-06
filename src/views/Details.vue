@@ -50,6 +50,10 @@
     }
 </script>
 
-<style scoped>
+<style lang="sass" scoped>
+    @import '../sass/scheme'
 
+    .details
+        color: $blue
+        margin: 20px 10px 0 10px
 </style>

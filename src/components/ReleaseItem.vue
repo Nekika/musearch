@@ -1,7 +1,7 @@
 <template>
-    <div class="release-item">
-        <h4>{{ title }}</h4>
-    </div>
+    <li class="release-item">
+        {{ title }}
+    </li>
 </template>
 
 <script>
@@ -16,6 +16,6 @@
     }
 </script>
 
-<style scoped>
+<style lang="sass" scoped>
 
 </style>

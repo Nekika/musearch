@@ -1,8 +1,9 @@
 <template>
     <div class="release-list">
-        <h3>Releases</h3>
-        <ReleaseItem v-for="(release, index) in releases" :key="index" :release="release"></ReleaseItem>
-        <button @click="loadMore">Load more</button>
+        <ul>
+            <ReleaseItem v-for="(release, index) in releases" :key="index" :release="release"></ReleaseItem>
+        </ul>
+        <button class="btn" @click="loadMore">Load more</button>
     </div>
 </template>
 
@@ -41,6 +42,7 @@
     }
 </script>
 
-<style scoped>
-
+<style lang="sass" scoped>
+    .release-list
+        @import "../sass/list"
 </style>
