@@ -1,5 +1,5 @@
 <template>
-    <div class="search">
+    <div class="searchbar">
         <select :value="selectedType" class="form-control-sm" @change="onTypeChange">
             <option v-for="(type,index) in types"
                     :key="index"
@@ -20,7 +20,7 @@
     import {mapGetters, mapMutations} from 'vuex'
 
     export default {
-        name: "Search",
+        name: "Searchbar",
         data: function () {
             return {
                 name: ""
@@ -50,7 +50,7 @@
 <style lang="sass" scoped>
     @import '../sass/scheme'
 
-    .search
+    .searchbar
         display: flex
         flex-direction: row
         justify-content: space-evenly

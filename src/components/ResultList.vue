@@ -42,5 +42,5 @@
                     margin-top: 0
                 &:last-child
                     margin-bottom: 0
-                //box-shadow: 3px 3px 5px black
+                box-shadow: 3px 3px 5px $blue
 </style>

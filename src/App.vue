@@ -1,14 +1,13 @@
 <template>
   <div id="app">
-    <div id="navbar">
-      <router-link to="/">musicbrainzzz</router-link>
-    </div>
+    <Navbar></Navbar>
     <router-view/>
   </div>
 </template>
 
 <script>
   import {mapActions, mapMutations} from 'vuex'
+  import Navbar from './components/Navbar'
   export default {
     name: 'App',
     methods: {
@@ -20,6 +19,9 @@
     },
     mounted(){
       this['setLoading'](false)
+    },
+    components: {
+      Navbar
     }
   }
 </script>
