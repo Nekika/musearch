@@ -21,7 +21,7 @@ const getters = {
     selectedType: state => {return state.selectedType},
     placeholder: state => {
         const a = state.selectedType === 'artist' ? 'an' : 'a'
-        return `Type the name of ${a} ${state.selectedType}`
+        return `type the name of ${a} ${state.selectedType}`
     },
     results: state => {return state.results},
 }

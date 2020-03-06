@@ -1,6 +1,6 @@
 <template>
     <div class="search">
-        <select :value="selectedType" @change="onTypeChange">
+        <select :value="selectedType" class="form-control-sm" @change="onTypeChange">
             <option v-for="(type,index) in types"
                     :key="index"
                     :selected="type === selectedType"
@@ -8,9 +8,10 @@
         </select>
         <input type="text"
                :placeholder="placeholder"
+               class="form-control-sm"
                v-model="name"
                @change="onChange">
-        <button>search</button>
+        <button class="btn-sm">search</button>
     </div>
 </template>
 
@@ -45,6 +46,27 @@
     }
 </script>
 
-<style scoped>
+<style lang="sass" scoped>
+    @import '../sass/scheme'
 
+    .search
+        display: flex
+        flex-direction: row
+        justify-content: space-evenly
+        input, select
+            text-align: center
+            border-width: 1px
+            border-color: $blue
+            color: $blue
+        select
+            background-color: $white
+        button
+            background-color: $green
+            border-color: $green
+            color: $white
+        @media (max-width: 425px)
+            select
+                width: 20%
+            input
+                width: 50%
 </style>
