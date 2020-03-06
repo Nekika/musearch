@@ -18,6 +18,9 @@
         background-color: $green
         display: block
         padding: 10px
+        position: sticky
+        top: 0
+        width: 100%
         a
             color: $white
             &:hover
