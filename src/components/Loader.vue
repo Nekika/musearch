@@ -1,5 +1,7 @@
 <template>
-    <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+    <div class="loader">
+        <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+    </div>
 </template>
 
 <script>
@@ -9,6 +11,10 @@
 </script>
 
 <style lang="css" scoped>
+    .loader{
+        width: fit-content;
+        margin: 50px auto;
+    }
     .lds-ellipsis {
         display: inline-block;
         position: relative;
