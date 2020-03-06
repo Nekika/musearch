@@ -61,7 +61,7 @@
                 text-decoration: underline
         .info
             padding: 0
-            overflow: scroll
+            overflow: hidden
             li
                 list-style: none
                 svg
