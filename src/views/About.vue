@@ -6,11 +6,11 @@
                 <b>musearch</b> is an homework project about creating an application using Vue.js
             </p>
             <p>
-                the app also uses <a href="https://vuex.vuejs.org/">Vuex</a> for the state management and
-                <a href="https://github.com/axios/axios">axios</a> for the API calls
+                the app also uses <a href="https://vuex.vuejs.org/" target="_blank" t>Vuex</a> for the state management and
+                <a href="https://github.com/axios/axios" target="_blank">axios</a> for the API calls
             </p>
             <p>
-                the whole code is available on <a href="https://github.com/Nekika/musearch.git">GitHub</a>
+                the whole code is available on <a href="https://github.com/Nekika/musearch" target="_blank">GitHub</a>
             </p>
         </section>
         <section>
