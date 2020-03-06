@@ -14,9 +14,17 @@
 
 <style lang="sass" scoped>
     @import '../sass/scheme'
-
     .navbar
         background-color: $green
+        display: block
+        padding: 10px
         a
             color: $white
+            &:hover
+                color: $lightgrey
+                text-decoration: none
+            &:nth-child(1)
+                font-size: 16pt
+            &:nth-child(n + 2)
+                margin-left: 15px
 </style>
