@@ -32,7 +32,9 @@
                 return this.result.country || 'unknown'
             },
             artist: function () {
-                return this.result['artist-credit'][0].name || 'unknown'
+                const artists = []
+                this.result['artist-credit'].forEach(a => artists.push(a.name))
+                return artists.join(' & ') || 'unknown'
             },
             release: function () {
                 return this.result.releases[0].title || 'unknown'
