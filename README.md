@@ -1,4 +1,4 @@
-# musicbrainz
+# musearch
 
 ## Project setup
 ```
