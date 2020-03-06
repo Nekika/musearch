@@ -8,6 +8,7 @@
         </select>
         <input type="text"
                :placeholder="placeholder"
+               autofocus
                class="form-control-sm"
                v-model="name"
                @change="onChange">
@@ -64,9 +65,17 @@
             background-color: $green
             border-color: $green
             color: $white
-        @media (max-width: 425px)
+        @media (max-width: 320px)
+            select
+                width: 30%
+            input
+                width: 45%
+        @media (min-width: 321px)
+            input
+                width: 50%
+        @media (min-width: 376px)
             select
                 width: 20%
             input
-                width: 50%
+                width: 60%
 </style>
