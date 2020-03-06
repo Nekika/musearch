@@ -1,6 +1,7 @@
 <template>
     <div id="home">
         <div class="headers">
+            <img :src="logo" alt="musearch">
             <h1>musearch</h1>
             <h2>the ultimate music search-engine</h2>
         </div>
@@ -31,7 +32,12 @@
 
 <script>
     export default {
-        name: "Home"
+        name: "Home",
+        data: function () {
+            return {
+                logo: require('../assets/search.svg')
+            }
+        }
     }
 </script>
 
@@ -51,4 +57,12 @@
         section
             margin: 30px 10px
             text-align: justify
+            h3
+                padding-bottom: 15px
+                border-bottom: 1px solid $lightgrey
+
+    img
+        max-width: 220px
+        height: auto
+        margin-bottom: 20px
 </style>
