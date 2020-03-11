@@ -18,14 +18,14 @@
         </section>
         <section>
             <h3>get started</h3>
-            <p>go to the <a href="/search">search section</a> in order to make a research</p>
+            <p>go to the <router-link to="search">search section</router-link> in order to make a research</p>
             <p>here you can select a category and type the name of the entity you're looking for</p>
             <p>after hitting the search button you'll get the list of the 10 most relevant results</p>
             <p>click on a result's title make you go to it's detail page</p>
         </section>
         <section>
             <h3>to go further</h3>
-            check the <a href="/about">about section</a> fore more details about the project
+            check the <router-link to="/about">about section</router-link> fore more details about the project
         </section>
     </div>
 </template>
