@@ -2,7 +2,7 @@ import axios from "axios";
 
 const state = {
     error: null,
-    types: ['artist', 'recording', 'release', 'label'],
+    types: ['artist', 'recording', 'release'],
     selectedType: null,
     results: null
 }
