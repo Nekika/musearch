@@ -16,7 +16,7 @@
         <section>
             <h3>the author</h3>
             <p>
-                my name is <b>Hugo</b> and at the time of writing this i'm a french web development student
+                my name is <b>Hugo</b> and at the time of writing this i'm a french <b>web development student</b>
                 from Nancy
             </p>
             <div class="icons">
@@ -43,7 +43,7 @@
             font-size: 30pt
             text-align: center
             a
-                color: $blue
+                color: $green
                 &:hover
                     color: $lightgrey
                 svg

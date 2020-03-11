@@ -12,8 +12,8 @@
                 a song or a label
             </p>
             <p>
-                it works thank's to the <a href="https://musicbrainz.org/">MusicBrainz</a> open music encyclopedia and especially
-                the <a href="https://musicbrainz.org/doc/Development/JSON_Web_Service">JSON webservice</a>
+                it works thank's to the <a href="https://musicbrainz.org/" target="_blank">MusicBrainz</a> open music encyclopedia and especially
+                the <a href="https://musicbrainz.org/doc/Development/JSON_Web_Service" target="_blank">JSON webservice</a>
             </p>
         </section>
         <section>
