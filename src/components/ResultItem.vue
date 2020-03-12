@@ -1,6 +1,11 @@
 <template>
     <li class="result-item">
-        <h4 @click="goToDetails">{{ name }}</h4>
+        <h4 @click="goToDetails">
+            <i v-if="type === 'artist'" class="fas fa-users"></i>
+            <i v-else-if="type === 'release'" class="fas fa-compact-disc"></i>
+            <i v-else class="fas fa-music"></i>
+            {{ name }}
+        </h4>
         <ul class="info">
             <li v-if="type === 'artist'"><i class="fas fa-info-circle"></i>{{ about }}</li>
             <li v-if="type === 'artist'"><i class="fas fa-globe"></i>{{ country }}</li>
