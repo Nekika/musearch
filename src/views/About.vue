@@ -17,7 +17,7 @@
             <h3>the author</h3>
             <p>
                 my name is <b>Hugo</b> and at the time of writing this i'm a french <b>web development student</b>
-                from Nancy
+                from Nancy, France
             </p>
             <div class="icons">
                 <a href="https://github.com/Nekika" target="_blank"><i class="fab fa-github-square"></i></a>
