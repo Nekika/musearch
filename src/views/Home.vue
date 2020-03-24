@@ -8,8 +8,8 @@
         <section>
             <h3>what is musearch ?</h3>
             <p>
-                musearch is a search-engine intended for people wishing to get information about an artist, an album,
-                a song or a label
+                musearch is a search-engine intended for people wishing to get information about an artist, an album
+                (release) or a song (recording)
             </p>
             <p>
                 it works thank's to the <a href="https://musicbrainz.org/" target="_blank">MusicBrainz</a> open music encyclopedia and especially
@@ -62,7 +62,20 @@
                 border-bottom: 1px solid $lightgrey
 
     img
-        max-width: 220px
         height: auto
         margin-bottom: 20px
+        @media (max-height: 568px)
+            max-height: 80px
+        @media (min-height: 569px) and (max-height: 640px)
+            max-height: 150px
+        @media (min-height: 641px) and (max-height: 667px)
+            max-height: 175px
+        @media (min-height: 668px) and (max-height: 731px)
+            max-height: 240px
+        @media (min-height: 732px) and (max-height: 736px)
+            max-height: 245px
+        @media (min-height: 737px) and (max-height: 823px)
+            max-height: 300px
+        @media (min-height: 824px) and (max-height: 1024px)
+            max-height: 350px
 </style>

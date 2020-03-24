@@ -3,7 +3,7 @@
         <section>
             <h3>the project</h3>
             <p>
-                <b>musearch</b> is an homework project about creating an application using Vue.js
+                <b>musearch</b> is an homework project about creating an application using <a href="https://vuejs.org/" target="_blank">Vue.js</a>
             </p>
             <p>
                 the app also uses <a href="https://vuex.vuejs.org/" target="_blank" t>Vuex</a> for the state management and
