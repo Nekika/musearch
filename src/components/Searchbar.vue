@@ -62,6 +62,7 @@
             border-width: 1px
             border-color: $blue
             color: $blue
+            font-size: 16px
         select
             background-color: $white
         button
