@@ -58,4 +58,5 @@
         margin: 20px 10px 0 10px
         h2
             text-align: center
+            font-weight: bold
 </style>

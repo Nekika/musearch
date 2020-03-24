@@ -11,8 +11,8 @@
                autofocus
                class="form-control-sm"
                v-model="name"
-               @change="onChange">
-        <button class="btn-sm">search</button>
+               @keypress="onKeypress">
+        <button class="btn-sm" @click="trigger">search</button>
     </div>
 </template>
 
@@ -37,7 +37,10 @@
             ...mapMutations([
                'search/setSelectedType'
             ]),
-            onChange: function () {
+            onKeypress: function (e) {
+                if (e.key === 'Enter') this.trigger()
+            },
+            trigger: function () {
                 this.$emit('changed', this.name)
             },
             onTypeChange: function (e) {
