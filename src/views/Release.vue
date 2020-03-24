@@ -4,15 +4,14 @@
             <span>{{ artists }}</span>
         </h3>
         <img :src="cover" :alt="artists">
-        <h3>Recordings</h3>
-        <ul>
+        <ol>
             <li v-for="(track, index) in tracklist" :key="index">{{ track.title }}</li>
-        </ul>
+        </ol>
     </div>
 </template>
 
 <script>
-    import {mapGetters, mapActions} from 'vuex'
+    import {mapGetters} from 'vuex'
     export default {
         name: "Releases",
         props: ['id'],
@@ -22,14 +21,6 @@
               tracklist: 'release/tracklist',
               artists: 'release/artists'
           })
-        },
-        methods: {
-            ...mapActions([
-                'release/getData'
-            ])
-        },
-        created() {
-            this['release/getData'](this.id)
         }
     }
 </script>
@@ -43,5 +34,5 @@
         display: flex
         margin: auto
 
-    
+
 </style>

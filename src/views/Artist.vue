@@ -16,7 +16,7 @@
 </template>
 
 <script>
-    import {mapGetters, mapActions} from 'vuex'
+    import {mapGetters} from 'vuex'
     import RecordList from "../components/RecordList"
     import ReleaseList from "../components/ReleaseList"
     export default {
@@ -34,15 +34,9 @@
             })
         },
         methods: {
-            ...mapActions([
-                'artist/getData'
-            ]),
             setVisible: function (list) {
                 this.visible = list
             }
-        },
-        created() {
-            this['artist/getData'](this.id)
         },
         components: {
             RecordList,

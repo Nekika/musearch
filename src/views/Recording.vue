@@ -9,7 +9,7 @@
 </template>
 
 <script>
-    import {mapGetters, mapActions} from 'vuex'
+    import {mapGetters} from 'vuex'
     export default {
         name: "Recording",
         props: ['id'],
@@ -18,14 +18,6 @@
                 release: 'recording/release',
                 artists: 'recording/artists'
             })
-        },
-        methods: {
-            ...mapActions([
-                'recording/getData'
-            ])
-        },
-        created() {
-            this['recording/getData'](this.id)
         }
     }
 </script>

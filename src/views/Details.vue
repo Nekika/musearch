@@ -32,14 +32,17 @@
             ]),
             ...mapActions([
                 'entity/reset',
-                'entity/getDetails'
+                'entity/getDetails',
+                'entity/getData'
             ])
         },
         created(){
-            this['entity/reset'](this.type)
+            const params = { id: this.id, type: this.type }
+            this['entity/reset'](params.type)
             this['entity/getDetails']({ id: this.id, type: this.type })
-                .then(() => this['setLoading'](false))
+                .then(() => { return this['entity/getData'](params) })
                 .catch(err => this['setError'](err))
+                .finally(this['setLoading'](false))
         },
         components: {
             Loader,
