@@ -1,24 +1,5 @@
 # musearch
 
-## Project setup
-```
-npm install
-```
+musearch is an homework project about creating an application using [Vue.js](https://vuejs.org)
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+the app also uses [Vuex](https://vuex.vuejs.org/) for the state management and [axios](https://github.com/axios/axios) for the API calls
