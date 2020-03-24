@@ -39,7 +39,7 @@
             artist: function () {
                 const artists = []
                 this.result['artist-credit'].forEach(a => artists.push(a.name))
-                return artists.join(' & ') || 'unknown'
+                return artists.join(' x ') || 'unknown'
             },
             release: function () {
                 return this.result.releases[0].title || 'unknown'
